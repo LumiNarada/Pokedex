@@ -12,4 +12,7 @@ class DataFrame():
 
     def capturado(self, nPok):
         self._df.loc[nPok, ["Captura"]]=[1]
+    
+    def actualizar(self, fila, columna, datoAct):
+        self._df.loc[fila, [columna][0]]=[datoAct]
 
