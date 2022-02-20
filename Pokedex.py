@@ -1,69 +1,37 @@
 from Json import DataFrame
+from Pokemones import Pokemon
 from Estadisticas import estadisticas
 from Pelea import explorar, desafiar
-
-class FueraDeRango(Exception):
-    def __init__(self):
-        super().__init__(self)
-
-def lanzExcep(numero, lim1, lim2):
-    if(numero< lim1 or numero > lim2):
-        raise FueraDeRango()
-    else:
-        pass
-
-def menu(lista,inst,lim1, lim3):
-    while (True):
-        try: 
-            print(lista)
-            opcion = int(input(inst))
-            lanzExcep(opcion, lim1, lim3)
-            break
-        except FueraDeRango:
-            print("\n¡Caramba!¡Creo que estás un poco confundido!\n")
-        except ValueError:
-            print("\n¡Caramba!¡Creo que estás un poco confundido!\n")
-        finally:
-            pass
-    return opcion
-
-
-class Pokemon():
-    def __init__(self,nombre):
-        self._nombre = nombre
-    def getNombre(self):
-        return self._nombre
+from Exepciones import menu
 
 pokedex=DataFrame("Pokedex")
 pokemones=DataFrame("Pokemon")
 
 """df2.set_index('Nombre', inplace=True)"""
 
-
-
-if (pokemones.df.loc[0, ["Nombre"][0]]=="Ninguno"):
-    print("¡Hola!\n¡Este es el mundo de los pokemon!\n¡Me llamo Oak!\n¡Pero la gente me llama Profesor Pokemon!")
+if (pokemones.df.loc[0]==NULL):
+    print("\n¡Hola!\n¡Este es el mundo de los pokemon!\n¡Me llamo Oak!\n¡Pero la gente me llama Profesor Pokemon!")
     print("¡Aquí hay tres pokemon!\n¡Cuando yo era joven era un buen entrenador pokemon!")
-    print("Pero ahora solo me quedan tres...\n¡Te dare uno! ¿Cuál quieres?")
+    print("Pero ahora solo me quedan tres...\n \n¡Te dare uno! ¿Cuál quieres?\n")
     p=menu(
-        "1. BULBASAUR\n2. SQUIRTLE\n3. CHARMANDER",
+        "1. BULBASAUR\t2. SQUIRTLE\t3. CHARMANDER",
         "Escribe el número asociado al pokemon que te gusta más ",
         1, 3)
-    print("¿Te gustaría darle un nombre especial?")
+    print("\n¿Te gustaría darle un nombre especial?")
     n=menu(
-        "1.Si\t2. No",
-        "Escribe el número asociado tu respuesta", 
+        "1.Si\t2. No\n",
+        "Escribe el número asociado tu respuesta ", 
         1, 2)
     if (n==1):
         n=2
         while (n==2):
             nom=input("¿Como te gustaría llamarle?")
-            print("¿Estás seguro de que quieres llamarle"+str(nom)+"?")
+            print("¿Estás seguro de que quieres llamarle "+str(nom)+"?")
             n=menu(
                 "1.Si\t2. No",
                 "Escribe el número asociado tu respuesta", 
                 1, 2)
-    print("¡Perfecto!")
+    print("\n¡Perfecto!\n")
     if (p==1):
         pokedex.capturado(1)
         elegido="Bulbasaur"
