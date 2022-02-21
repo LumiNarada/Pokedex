@@ -1,1 +1,1 @@
-{"nombre":{"0":"BULBASAUR","1":"BULBASAUR"},"especie":{"0":"BULBASAUR","1":"BULBASAUR"},"vida_actual":{"0":200,"1":10},"lvl_actual":{"0":5,"1":2},"exp_actual":{"0":0,"1":0},"evol":{"0":0,"1":0},"ataqueA":{"0":"ESPORA","1":"ESPORA"},"ataqueB":{"0":"Ninguno","1":"Ninguno"},"ataqueC":{"0":"Ninguno","1":"Ninguno"},"ataqueD":{"0":"Ninguno","1":"Ninguno"}}
+{"nombre":{"0":"Ninguno"},"especie":{"0":0},"vida_actual":{"0":0},"lvl_actual":{"0":0},"exp_actual":{"0":0},"evol":{"0":0},"ataqueA":{"0":"Ninguno"},"ataqueB":{"0":"Ninguno"},"ataqueC":{"0":"Ninguno"},"ataqueD":{"0":"Ninguno"}}
