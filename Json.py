@@ -41,9 +41,14 @@ class DataFrame():
         filtro = self._df["num"] == numIndex
         return self._df[filtro].iloc[0,[0]][0]
 
-    def encontrarNombre(self, numIndex):
+    def encontrarEspecie(self, numIndex):
         filtro = self._df["num"] == numIndex
         return self._df[filtro].iloc[0,[1]][0]
+
+    def encontrarNombre(self, numIndex):
+        filtro = self._df["nombre"] == numIndex
+        return self._df[filtro].iloc[0,[0]][0]
+
 
     
 
