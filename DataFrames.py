@@ -37,17 +37,23 @@ class DataFrame():
     def eliminarFila(self, fila):
         self._df=self._df.drop(index=fila)
 
-    def encontrarNum(self, numIndex):
-        filtro = self._df["num"] == numIndex
-        return self._df[filtro].iloc[0,[0]][0]
+    """def encontrarNum(self, numIndex):
+        num= self._df.set_index("num").loc[numIndex,"nombre"]
+        return especie"""
 
     def encontrarEspecie(self, numIndex):
-        filtro = self._df["num"] == numIndex
-        return self._df[filtro].iloc[0,[1]][0]
+        especie= self._df.set_index("num").loc[numIndex,"nombre"]
+        return especie
 
-    def encontrarNombre(self, numIndex):
-        filtro = self._df["nombre"] == numIndex
-        return self._df[filtro].iloc[0,[0]][0]
+    """def encontrarNombre(self, numIndex):
+        nombre= self._df.set_index("num").loc[numIndex,"nombre"]
+        return nombre"""
+
+    def set_index(self, index):
+        self._df.set_index(index, inplace=True)
+
+    def reset_index(self):
+        self._df.reset_index(inplace=True)
 
 
     

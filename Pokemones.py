@@ -9,17 +9,18 @@ class Pokemon():
         self._lvl=lvl
         self._num=pokedex.df.set_index("nombre").loc[self._especie, "num"]
         self._tipo=pokedex.df.set_index("nombre").loc[self._especie, "tipo"]
-        self._descripcion=pokedex.df.set_index("nombre").loc[self._especie, "tipo"]
+        self._descripcion=pokedex.df.set_index("nombre").loc[self._especie, "descripcion"]
+        self._captura=pokedex.df.set_index("nombre").loc[self._especie, "captura"]
         
         filtrotipo= ataques.df["tipo"]==self._tipo
         filtrolvl = ataques.df["lvl_aprendizaje"] <= self._lvl
 
         if(pokemones.df[pokemones.df["nombre"]==self._nombre].shape[0]==1):
-            self._ataqueA=pokemones.df[pokemones.df["nombre"]==self._nombre]["ataqueA"][0]
-            self._ataqueB=pokemones.df[pokemones.df["nombre"]==self._nombre]["ataqueB"][0]
-            self._ataqueC=pokemones.df[pokemones.df["nombre"]==self._nombre]["ataqueC"][0]
-            self._ataqueD=pokemones.df[pokemones.df["nombre"]==self._nombre]["ataqueD"][0]
-            self._vidaActual=pokemones.df[pokemones.df["nombre"]==self._nombre]["vida_actual"][0]
+            self._ataqueA=pokemones.df.set_index("nombre").loc[self.nombre, "ataqueA"]
+            self._ataqueB=pokemones.df.set_index("nombre").loc[self.nombre, "ataqueB"]
+            self._ataqueC=pokemones.df.set_index("nombre").loc[self.nombre, "ataqueC"]
+            self._ataqueD=pokemones.df.set_index("nombre").loc[self.nombre, "ataqueD"]
+            self._vidaActual=pokemones.df.set_index("nombre").loc[self.nombre, "vida_actual"]
         elif(ataques.df[filtrotipo&filtrolvl].shape[0]<4):
             self._vidaActual=pokedex.df.set_index("nombre").loc[self._especie, "vida_total"]
             aprendidos=ataques.df[filtrotipo&filtrolvl].shape[0]-1
@@ -99,9 +100,21 @@ class Pokemon():
     def lvl(self):
         return self._lvl
 
+    @property
+    def captura(self):
+        return self._captura
+
     @vidaActual.setter
     def vidaActual(self, valor):
         self._vidaActual = valor
+
+    @lvl.setter
+    def lvl(self, valor):
+        self._lvl = valor
+    
+    @nombre.setter
+    def nombre(self, valor):
+        self._nombre = valor
 
     def capturar(self, pokedex, pokemones):
         
